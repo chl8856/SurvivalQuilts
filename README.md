@@ -1,4 +1,8 @@
 # SurvivalQuilts
+
+** A more stable and user-friendly version was uploaded on 10/09/2023.
+
+
 Title: "Temporal Quilting for Survival Analysis"
 
 Authors: Changhee Lee, William R. Zame, Ahmed M. Alaa, Mihaela van der Schaar
@@ -13,3 +17,4 @@ This code shows the implementation of SurvivalQuilts and a toy example on the Me
 The detailed modifications are as follows:
 - Current version contains python based survvial analysis models as the underlying models. 
 - Deep learning methods will be included in the future release.
+
