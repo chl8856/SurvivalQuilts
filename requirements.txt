@@ -1,5 +1,5 @@
 scikit-learn==1.0.2
-scikit-survival==0.0.0
+scikit-survival==0.17.2
 lifelines==0.27.4
 GpyOpt==1.2.6
 numpy==1.22.3
