@@ -183,7 +183,7 @@ class SurvivalQuilts():
             new_K_step = min(K_step + 1 + self.step_ahead, len(self.time_optimization))
             for k in range(K_step, new_K_step):
                 metric_CINDEX[cv_itr] += 1./(new_K_step - K_step) * concordance_index_ipcw(tr_tte_structured, va_tte_structured, pred[:,k], tau=self.time_optimization[k])[0]            
-                metric_CINDEX[cv_itr] += 1./(new_K_step - K_step) * brier_score(tr_tte_structured, va_tte_structured2, 1.- pred[:,k], times=self.time_optimization[k])[1][0]
+                metric_BRIER[cv_itr] += 1./(new_K_step - K_step) * brier_score(tr_tte_structured, va_tte_structured2, 1.- pred[:,k], times=self.time_optimization[k])[1][0]
         
         return (- metric_CINDEX.mean(),1.96*np.std(metric_CINDEX)/np.sqrt(self.num_validation)), (metric_BRIER.mean(),1.96*np.std(metric_BRIER)/np.sqrt(self.num_validation))
 
