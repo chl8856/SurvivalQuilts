@@ -40,7 +40,7 @@ class WeibullAFT(lifelinesSurvival):
         self.name          = 'Weibull'
         self.explained     = "*Weibull AFT model"
 
-        self.model         = WeibullAFTFitter(alpha=0.05, penalizer=penalizer, l1_ratio=l1_ratio)
+        self.model         = WeibullAFTFitter(alpha=alpha, penalizer=penalizer, l1_ratio=l1_ratio)
 
     def get_hyperparameters(self):
         return {'alpha': self.model.alpha, 'penalizer': self.model.penalizer, 'l1_ratio': self.model.l1_ratio}
@@ -57,7 +57,7 @@ class LogNormalAFT(lifelinesSurvival):
         self.name          = 'LogNormal'
         self.explained     = "*LogNormal AFT model"
 
-        self.model         = LogNormalAFTFitter(alpha=0.05, penalizer=penalizer, l1_ratio=l1_ratio)
+        self.model         = LogNormalAFTFitter(alpha=alpha, penalizer=penalizer, l1_ratio=l1_ratio)
         
 
     def get_hyperparameters(self):
@@ -75,7 +75,7 @@ class LogLogisticAFT(lifelinesSurvival):
         self.name          = 'LogLogistic'
         self.explained     = "*LogLogistic AFT model"
 
-        self.model         = LogLogisticAFTFitter(alpha=0.05, penalizer=penalizer, l1_ratio=l1_ratio)
+        self.model         = LogLogisticAFTFitter(alpha=alpha, penalizer=penalizer, l1_ratio=l1_ratio)
         
 
     def get_hyperparameters(self):
