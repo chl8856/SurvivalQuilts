@@ -203,7 +203,7 @@ class SurvivalQuilts():
             tmp_pred1 = models[m_idx].predict(X, time_horizons_superset)
             tmp_pred2 = models[m_idx].predict(X, self.time_optimization)
 
-            for tt in range(len(time_horizons)):
+            for tt in range(len(self.time_optimization)):
                 if tt == 0:
                     tmp_time_idx1 = np.asarray(time_horizons_superset) <= self.time_optimization[tt]
                     tmp_time_idx2 = np.asarray(time_horizons_superset) >  self.time_optimization[tt]
@@ -216,7 +216,8 @@ class SurvivalQuilts():
                     pred[:, tmp_time_idx2] = pred[:, tmp_time_idx2] + W[tt,m_idx] * (next_val - prev_val)
 
                 elif tt == len(self.time_optimization) - 1: #the last index  
-                    tmp_time_idx1 = (np.asarray(time_horizons_superset) > self.time_optimization[tt-1]) & (np.asarray(time_horizons_superset) <= self.time_optimization[tt])
+                    # tmp_time_idx1 = (np.asarray(time_horizons_superset) > self.time_optimization[tt-1]) & (np.asarray(time_horizons_superset) <= self.time_optimization[tt])
+                    tmp_time_idx1 = (np.asarray(time_horizons_superset) > self.time_optimization[tt-1])
                     prev_val      = tmp_pred2[:, [tt-1]]
                     
                     increment              = tmp_pred1[:, tmp_time_idx1] - prev_val
@@ -231,7 +232,8 @@ class SurvivalQuilts():
                     increment              = tmp_pred1[:, tmp_time_idx1] - prev_val
                     pred[:, tmp_time_idx1] = pred[:, tmp_time_idx1] + W[tt,m_idx] * increment                
                     pred[:, tmp_time_idx2] = pred[:, tmp_time_idx2] + W[tt,m_idx] * (next_val - prev_val)
-        return pred
+                    
+        return pred[:, [f_idx for f_idx, f in enumerate(time_horizons_superset) if f in time_horizons]]
     
     
 
